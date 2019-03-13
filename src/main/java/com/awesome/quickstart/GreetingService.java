@@ -1,12 +1,14 @@
 package com.awesome.quickstart;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 @ApplicationScoped
 public class GreetingService {
 
-    public String geeting(String name) {
-        return "Hello " + name;
+    public CompletionStage<String> geeting(String name) {
+        return CompletableFuture.supplyAsync(() -> "Hello " + name);
 
     }
 }
